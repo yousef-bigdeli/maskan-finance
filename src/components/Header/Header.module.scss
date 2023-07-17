@@ -1,0 +1,20 @@
+@import "../../styles/responsive";
+
+.header {
+  margin-top: 2.4rem;
+
+  h1 {
+    @include responsive(phone-landscape) {
+      text-align: center;
+      font-size: 2.8rem;
+    }
+    @include responsive(phone-portrait) {
+      text-align: center;
+      font-size: 2.4rem;
+    }
+  }
+
+  .searchContainer {
+    margin-top: 1.6rem;
+  }
+}
