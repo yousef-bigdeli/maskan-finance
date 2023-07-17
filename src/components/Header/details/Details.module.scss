@@ -1,0 +1,19 @@
+@import "../../../styles/responsive";
+
+.wrapper {
+  margin-top: 2rem;
+
+  .row {
+    margin-top: 1.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive(phone-landscape) {
+      flex-direction: column-reverse;
+    }
+    @include responsive(phone-portrait) {
+      flex-direction: column-reverse;
+    }
+  }
+}

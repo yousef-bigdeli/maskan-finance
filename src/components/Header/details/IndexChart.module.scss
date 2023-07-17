@@ -1,0 +1,12 @@
+@import "../../../styles/responsive";
+
+.indexChart-wrapper {
+  width: 70%;
+
+  @include responsive(phone-landscape) {
+    width: 100%;
+  }
+  @include responsive(phone-portrait) {
+    width: 100%;
+  }
+}
