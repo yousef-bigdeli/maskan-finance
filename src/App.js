@@ -1,7 +1,12 @@
 import "./App.css";
+import IndexProvider from "./context/indexProvider";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <IndexProvider></IndexProvider>
+    </div>
+  );
 }
 
 export default App;
