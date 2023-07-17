@@ -12,26 +12,24 @@ const Details = () => {
 
   // Loading Data
   if (isLoading) {
-    return (
-      <div className={styles.loading}>
-        <img src={loading} alt="" />
-      </div>
-    );
+    return <div className={styles.loading}>در حال بارگزاری...</div>;
   }
 
   // Has error
   // TODO: Style the error warning
   if (!isLoading && error) return <h2>دریافت اطلاعات با مشکل مواجه شد.</h2>;
 
+  if (!isLoading && !data.history) return <h2>نمادی انتخاب نشده است.</h2>;
+
   // Show results
   return (
     <section className={styles.wrapper}>
       {!isLoading && (
         <>
-          <h2>شاخص کل</h2>
+          <h2>{data.title}</h2>
           <div className={styles.row}>
-            <IndexTable data={data} />
-            <IndexChart />
+            <IndexTable data={data.history} />
+            <IndexChart data={data} />
           </div>
         </>
       )}

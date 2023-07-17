@@ -5,14 +5,13 @@ const IndexHistoryDispatcher = createContext();
 
 // Define the initial state
 const initialState = {
-  data: [],
+  data: {},
   isLoading: false,
   error: null,
 };
 
 // Define the reducer function
-const reducer = (state, action) => {
-  console.log(action);
+const reducer = (state, action) => { 
   switch (action.type) {
     case "REQUEST_START":
       return { ...state, isLoading: true };

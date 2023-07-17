@@ -45,7 +45,7 @@ const Search = () => {
         );
 
         const convertedData = highchartsDataConvert(data.indexB2);
-        dispatchHistory({ type: "REQUEST_FULFILLED", payload: convertedData });
+        dispatchHistory({ type: "REQUEST_FULFILLED", payload: {title: selectedIndex.label, history: convertedData} });
       } catch (error) {
         dispatchHistory({ type: "REQUEST_FAILD", payload: error.message });
       }
