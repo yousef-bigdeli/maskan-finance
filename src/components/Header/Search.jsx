@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-// Api helper
+// helper
 import { getIndexHistory } from "../../utils/api/tsetmc-api";
+import { highchartsDataConvert } from "../../utils/helpers/highchartsDataConverter";
 // Context
 import { useIndexData } from "../../context/indexProvider";
 import { useIndexHistoryDispatcher } from "../../context/indexHistoryProvider";
@@ -8,13 +9,13 @@ import { useIndexHistoryDispatcher } from "../../context/indexHistoryProvider";
 import Select from "react-select";
 // Style
 import styles from "./Header.module.scss";
-import { combineDayHistory } from "../../utils/helpers/combineDayHistory";
 
 const Search = () => {
-  const [selectOptions, setSelectOptions] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const { data, isLoading } = useIndexData();
-  const dispatchHistory = useIndexHistoryDispatcher();
+  const [selectOptions, setSelectOptions] = useState([]); // default values for React Select component
+  const [selectedIndex, setSelectedIndex] = useState(null); // Selected index by user
+
+  const { data, isLoading } = useIndexData(); // get indexes data from context store
+  const dispatchHistory = useIndexHistoryDispatcher(); // dispatcher for index history
 
   // Get index values
   useEffect(() => {
@@ -25,7 +26,7 @@ const Search = () => {
     }
   }, [data, isLoading]);
 
-  // **** Handle serch input
+  // ****************** Handle serch input
   const handleIndexSearch = (selected) => {
     setSelectedIndex(selected);
   };
@@ -36,20 +37,22 @@ const Search = () => {
 
     // Fetch History when user selected index
     const getHistory = async () => {
-      const data = await getIndexHistory(
-        selectedIndex.value,
-        controller.signal
-      );
-      dispatchHistory(data.indexB2);
+      dispatchHistory({ type: "REQUEST_START" });
+      try {
+        const data = await getIndexHistory(
+          selectedIndex.value,
+          controller.signal
+        );
 
-      const cda = combineDayHistory(data.indexB2);
-      console.log(cda);
+        const convertedData = highchartsDataConvert(data.indexB2);
+        dispatchHistory({ type: "REQUEST_FULFILLED", payload: convertedData });
+      } catch (error) {
+        dispatchHistory({ type: "REQUEST_FAILD", payload: error.message });
+      }
     };
 
     if (selectedIndex) {
       getHistory();
-    } else {
-      dispatchHistory(null);
     }
 
     // Clean up => abort all requests when sending a new requests before get the result
@@ -58,6 +61,7 @@ const Search = () => {
     };
   }, [selectedIndex]);
 
+  // ****************************
   return (
     <div className={styles.searchContainer}>
       <Select
