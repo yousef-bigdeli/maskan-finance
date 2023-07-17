@@ -1,4 +1,4 @@
-@import "../../../styles/responsive";
+@import "../styles/responsive";
 
 .wrapper {
   margin-top: 2rem;
@@ -15,5 +15,14 @@
     @include responsive(phone-portrait) {
       flex-direction: column-reverse;
     }
+  }
+}
+
+.loading{
+  text-align: center;
+  margin-top: 2.4rem;
+
+  img{
+    width: 75px;
   }
 }

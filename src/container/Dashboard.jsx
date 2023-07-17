@@ -1,5 +1,5 @@
 import Header from "../components/Header/Header";
-import Details from "../components/Header/details/Details";
+import Details from "./Details";
 
 const Dashboard = () => {
   return (
