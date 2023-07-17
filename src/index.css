@@ -9,13 +9,29 @@
   text-decoration: none;
 }
 
+html{
+  font-size: 62.5%;;
+}
+
 body {
+  direction: rtl;
   margin: 0;
   font-family: "vazir", "Helvetica", "Arial", sans-serif;
   font-size: 1.4rem;
   line-height: 1.7;
+  background-color: #f9f9f9;
+  color: #373737;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 
+.App{
+  max-width: 1440px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+h1{
+  font-size: 3.2rem;
+}
