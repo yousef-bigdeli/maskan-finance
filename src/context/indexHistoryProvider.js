@@ -1,19 +1,36 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
 const IndexHistory = createContext();
 const IndexHistoryDispatcher = createContext();
 
-const IndexHistoryProvider = ({ children }) => {
-  const [historyData, setHistoryData] = useState(null);
+// Define the initial state
+const initialState = {
+  data: [],
+  isLoading: false,
+  error: null,
+};
 
-  // Get data and store globally
-  const handleHistoryData = (data) => {
-    setHistoryData(data);
-  };
+// Define the reducer function
+const reducer = (state, action) => {
+  console.log(action);
+  switch (action.type) {
+    case "REQUEST_START":
+      return { ...state, isLoading: true };
+    case "REQUEST_FULFILLED":
+      return { data: action.payload, isLoading: false, error: null };
+    case "REQUEST_FAILD":
+      return { data: [], isLoading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+const IndexHistoryProvider = ({ children }) => {
+  const [historyData, dispatch] = useReducer(reducer, initialState);
 
   return (
     <IndexHistory.Provider value={historyData}>
-      <IndexHistoryDispatcher.Provider value={handleHistoryData}>
+      <IndexHistoryDispatcher.Provider value={dispatch}>
         {children}
       </IndexHistoryDispatcher.Provider>
     </IndexHistory.Provider>
@@ -23,6 +40,6 @@ const IndexHistoryProvider = ({ children }) => {
 export default IndexHistoryProvider;
 
 // custom Hook for use index histoy data and dispatch new data
-export const useIndexHistoryData = () => useContext(IndexHistoryProvider);
+export const useIndexHistoryData = () => useContext(IndexHistory);
 export const useIndexHistoryDispatcher = () =>
   useContext(IndexHistoryDispatcher);
