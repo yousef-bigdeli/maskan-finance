@@ -2,7 +2,9 @@
 
 .indexTable-wrapper {
   width: 30%;
+  height: 400px;
   padding-left: 1.2rem;
+  overflow: auto;
 
   @include responsive(phone-landscape) {
     width: 100%;
@@ -20,6 +22,21 @@
     text-align: center;
     border-collapse: collapse;
 
+    @include responsive(phone-landscape) {
+      thead tr {
+        position: sticky;
+        top: -1px;
+        z-index: 1;
+      }
+    }
+    @include responsive(phone-portrait) {
+      thead tr {
+        position: sticky;
+        top: -1px;
+        z-index: 1;
+      }
+    }
+
     td,
     th {
       padding: 0.8rem 0.4rem;
@@ -30,4 +47,8 @@
       background-color: #f1f1f1;
     }
   }
+}
+
+.loading {
+  text-align: center;
 }
