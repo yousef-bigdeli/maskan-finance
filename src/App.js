@@ -1,11 +1,14 @@
 import Dashboard from "./container/Dashboard";
+import IndexHistoryProvider from "./context/indexHistoryProvider";
 import IndexProvider from "./context/indexProvider";
 
 function App() {
   return (
     <div className="App">
       <IndexProvider>
-        <Dashboard />
+        <IndexHistoryProvider>
+          <Dashboard />
+        </IndexHistoryProvider>
       </IndexProvider>
     </div>
   );
