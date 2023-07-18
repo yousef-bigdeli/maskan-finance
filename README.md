@@ -1,4 +1,4 @@
-# Gathering and Displaying Stock Market Information
+# Display Stock Market Information (Maskan finance)
 
 This project aims to collect and display stock market information using data retrieved from the tsetmc service. 
 
@@ -10,7 +10,7 @@ This project aims to collect and display stock market information using data ret
 - Store the index information in the global state using **context**.
 - Implement a search feature to find specific index by user
 - Display the trading history of a selected index in an **OHLC** chart using Highcharts library.
-- Display the trading history of a selected index in a table.
+- Display the trading history of a selected index in a table. (Virtual scrolling)
 - Utilize React Select for enhanced user-friendly dropdown selection for index search.
 - Utilize SASS for styling and CSS pre-processing.
 ## Technologies
@@ -104,7 +104,7 @@ maskan-finance/
   - **`App.js`**: The main component that renders the application.
   - **`index.js`**: The entry point of the application.
 ## Git Workflow
-This project follows the Gitflow Workflow for managing the development process and version control. The Gitflow Workflow is a branching model that provides a robust framework for collaboration and feature development.
+This project follows the **Gitflow Workflow** for managing the development process and version control. The Gitflow Workflow is a branching model that provides a robust framework for collaboration and feature development.
 
 ### Branches
 The repository includes the following branches:
