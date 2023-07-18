@@ -19,7 +19,7 @@ const Details = () => {
   // TODO: Style the error warning
   if (!isLoading && error) return <h2>دریافت اطلاعات با مشکل مواجه شد.</h2>;
 
-  if (!isLoading && !data.history) return <h2>نمادی انتخاب نشده است.</h2>;
+  if (!isLoading && !data.history) return <h2 className={styles.loading}>نمادی انتخاب نشده است.</h2>;
 
   // Show results
   return (
