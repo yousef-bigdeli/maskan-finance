@@ -114,7 +114,7 @@ The repository includes the following branches:
 - **`features/index-dashboard`**: The features/index-dashboard branch was created from master and used for constructing the index dashboard feature. Once development was complete, it was merged back into master and versioned accordingly.
 
 ### Versioning
-We follow a versioning scheme to track the releases and changes made to the project. Each merge into master triggers a new version release, and we use Semantic Versioning (SemVer) to assign version numbers to our releases.
+We follow a versioning scheme to track the releases and changes made to the project. Each merge into master triggers a new version release, and we use [**`Semantic Versioning`**](https://semver.org/) (SemVer) to assign version numbers to our releases.
 ## Contributing
 
 This project is currently under development and not open for external contributions. However, feedback and suggestions are welcome and appreciated.
