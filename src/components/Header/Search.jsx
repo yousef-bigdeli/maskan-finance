@@ -45,7 +45,10 @@ const Search = () => {
         );
 
         const convertedData = highchartsDataConvert(data.indexB2);
-        dispatchHistory({ type: "REQUEST_FULFILLED", payload: {title: selectedIndex.label, history: convertedData} });
+        dispatchHistory({
+          type: "REQUEST_FULFILLED",
+          payload: { title: selectedIndex.label, history: convertedData },
+        });
       } catch (error) {
         dispatchHistory({ type: "REQUEST_FAILD", payload: error.message });
       }
@@ -53,6 +56,8 @@ const Search = () => {
 
     if (selectedIndex) {
       getHistory();
+    } else {
+      dispatchHistory({ type: "REQUEST_FULFILLED", payload: {} });
     }
 
     // Clean up => abort all requests when sending a new requests before get the result
