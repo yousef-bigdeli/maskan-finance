@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Gathering and Displaying Stock Market Information
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project aims to collect and display stock market information using data retrieved from the tsetmc service. 
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Fetch stock index information from the tsetmc service.
+- Store the index information in the global state using **context**.
+- Implement a search feature to find specific index by user
+- Display the trading history of a selected index in an **OHLC** chart using Highcharts library.
+- Display the trading history of a selected index in a table.
+- Utilize React Select for enhanced user-friendly dropdown selection for index search.
+- Utilize SASS for styling and CSS pre-processing.
+## Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Javascript**
+- [**React**](https://react.dev/)
+- [SASS](https://sass-lang.com/)
+- [Highcharts](https://www.highcharts.com/) 
+- React Select 
+- tsetmc API
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository: 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  $ git clone [repository URL]
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Navigate to the project directory: cd gathering-and-displaying-stock-market-info
 
-### `npm run eject`
+```bash
+  $ cd maskan-finance
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Install the dependencies: 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+  $ npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ 1. Start the development server:
 
-## Learn More
+```bash
+  $ npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Open your web browser and navigate to http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The project follows the standard folder structure of a React application:
 
-### Making a Progressive Web App
+```css
+maskan-finance/
+  node_modules/
+  public/
+    index.html
+    favicon.ico
+  src/
+    assets/
+      ...
+    components/
+      details/
+        IndexChart.jsx
+        IndexTable.jsx
+      Header.jsx
+      Search.jsx
+    container/
+      Dashboard.jsx
+      Details.jsx
+    context/
+      indexHistoryProvider.js
+      indexProvider.js
+    utils/
+      api/
+      helpers/
+    styles/
+      ...
+    App.js
+    index.js
+    package.json
+    README.md
+    ...
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **`public/`**: Contains the public assets and the main **`index.html`** file.
+- **`src/`**: Contains the application source code.
+  - **`components/`**: Contains the components used in the application.
+  - **`container/`**: It includes components that contain state and are used as a holder for other components.
+  - **`context/`**: Contains the context files for storing and accessing global state.
+  - **`utils/`**: Contains utility functions including API and helper functions.
+  - **`styles/`**: Contains the global style for the application.
+  - **`App.js`**: The main component that renders the application.
+  - **`index.js`**: The entry point of the application.
+## Git Workflow
+This project follows the Gitflow Workflow for managing the development process and version control. The Gitflow Workflow is a branching model that provides a robust framework for collaboration and feature development.
 
-### Advanced Configuration
+### Branches
+The repository includes the following branches:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **`master`**: The master branch represents the stable production-ready version of the project.
+- **`develop`**: The develop branch serves as the main branch for ongoing development and integration of features.
+- **`features/index-dashboard`**: The features/index-dashboard branch was created from master and used for constructing the index dashboard feature. Once development was complete, it was merged back into master and versioned accordingly.
 
-### Deployment
+### Versioning
+We follow a versioning scheme to track the releases and changes made to the project. Each merge into master triggers a new version release, and we use Semantic Versioning (SemVer) to assign version numbers to our releases.
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This project is currently under development and not open for external contributions. However, feedback and suggestions are welcome and appreciated.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
